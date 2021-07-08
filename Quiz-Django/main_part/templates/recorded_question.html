@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    
+<!-- Mirrored from Worksbot-admin.themesease.com/dashboard-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Feb 2021 14:45:45 GMT -->
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Stud-Result</title>
+
+        <!-- ========== COMMON STYLES ========== -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" media="screen" >
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" media="screen" >
+        <link rel="stylesheet" href="{% static 'css/animate-css/animate.min.css' %}" media="screen" >
+        <link rel="stylesheet" href="{% static 'css/lobipanel/lobipanel.min.css' %}" media="screen" >
+
+        <!-- ========== PAGE STYLES ========== -->
+        <link rel="stylesheet" href="{% static 'css/prism/prism.css' %}" media="screen" > <!-- USED FOR DEMO HELP - YOU CAN REMOVE IT -->
+        <link rel="stylesheet" href="{% static 'css/icheck/skins/line/blue.css' %}" >
+        <link rel="stylesheet" href="{% static 'css/icheck/skins/line/red.css' %}" >
+        <link rel="stylesheet" href="{% static 'css/icheck/skins/line/green.css' %}" >
+
+        <!-- ========== THEME CSS ========== -->
+        <link rel="stylesheet" href="{% static 'css/main.css' %}" media="screen" >
+
+        <!-- ========== MODERNIZR ========== -->
+        <script src="{% static 'js/modernizr/modernizr.min.js' %}"></script>
+    </head>
+    <body class="top-navbar-fixed" onload="time()">
+        <div class="main-wrapper">
+
+            <!-- ========== TOP NAVBAR ========== -->
+            <nav class="navbar top-navbar bg-white box-shadow">
+            	<div class="container-fluid">
+                    <div class="row">
+                        <div class="navbar-header no-padding">
+                            <a class="navbar-brand" href="index.html">
+                			    <label>Quiz</label>
+                			</a>
+                		</div>
+                        <!-- /.navbar-header -->
+
+                		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+                            <!-- /.nav navbar-nav -->
+
+                			<ul class="nav navbar-nav navbar-right" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                                <!-- /.dropdown -->
+                				<li class="dropdown">
+                					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{username}} <span class="caret"></span></a>
+                					<ul class="dropdown-menu profile-dropdown">
+                						<li class="profile-menu bg-gray">
+                						    <div class="">
+                						        <img src="http://placehold.it/60/c2c2c2?text=User" alt="John Doe" class="img-circle profile-img">
+                                                <div class="profile-name">
+                                                    <h6>{{username}}</h6>
+                                                    <a href="#">View Profile</a>
+                                                </div>
+                                                <div class="clearfix"></div>
+                						    </div>
+                						</li>
+                						<li role="separator" class="divider"></li>
+                						<li><a href="{% url 'logout' %}" class="color-danger text-center"><i class="fa fa-sign-out"></i> Logout</a></li>
+                					</ul>
+                				</li>
+                			</ul>
+                            <!-- /.nav navbar-nav navbar-right -->
+                		</div>
+                		<!-- /.navbar-collapse -->
+                    </div>
+                    <!-- /.row -->
+            	</div>
+            	<!-- /.container-fluid -->
+            </nav>
+
+            <!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
+            <div class="content-wrapper">
+                <div class="content-container">
+
+                    <!-- ========== LEFT SIDEBAR ========== -->
+                    <div class="left-sidebar bg-black-300 box-shadow">
+                        <div class="sidebar-content">
+                            <div class="sidebar-nav">
+                                <ul class="side-nav color-gray">
+                                    
+                                    <li class="nav-head">
+                                        <a href="{% url 'stud_dashboard' %}" class="active"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+                                        <a href="{% url 'taketest' %}"><i class="fa fa-dashboard"></i> <span>Take Test</span></a>
+                                        <a href="{% url 'stud_result' %}"><i class="fa fa-dashboard"></i> <span>Results</span></a>
+                                        <a href="{% url 'recorded_ques' %}"><i class="fa fa-dashboard"></i> <span>Recorded Question</span></a>
+                                    </li>
+                            </div>
+                            <!-- /.sidebar-nav -->
+                        </div>
+                        <!-- /.sidebar-content -->
+                    </div>
+                    <!-- /.left-sidebar -->
+
+                    <div class="main-page">
+                        <div class="container-fluid">
+                            <!-- /.row -->
+                            <h1>Recorded Question</h1>
+                            <table class="table">
+                                <thead>
+                                    <th>Question</th>
+                                    <th>Option1</th>
+                                    <th>Option2</th>
+                                    <th>Option3</th>
+                                    <th>Option4</th>
+                                    <th>Correct Answer</th>
+                                </thead>
+                                <tbody>
+                                    {% for i in rec_q %}
+                                    <tr>
+                                    <td>{{i.question}}</td>
+                                    <td>{{i.option1}}</td>
+                                    <td>{{i.option2}}</td>
+                                    <td>{{i.option3}}</td>
+                                    <td>{{i.option4}}</td>
+                                    <td>{{i.correct_ans}}</td>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.container-fluid -->
+                    </div>
+                    <!-- /.main-page -->
+
+                </div>
+                <!-- /.content-container -->
+            </div>
+            <!-- /.content-wrapper -->
+
+        </div>
+        <!-- /.main-wrapper -->
+
+        <!-- ========== COMMON JS FILES ========== -->
+        <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+        <script src="{% static 'js/jquery-ui/jquery-ui.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/pace/pace.min.js' %}"></script>
+        <script src="{% static 'js/lobipanel/lobipanel.min.js' %}"></script>
+        <script src="{% static 'js/iscroll/iscroll.js' %}"></script>
+
+        <!-- ========== PAGE JS FILES ========== -->
+        <script src="{% static 'js/prism/prism.js' %}"></script>
+        <script src="{% static 'js/waypoint/waypoints.min.js' %}"></script>
+        <script src="{% static 'js/counterUp/jquery.counterup.min.js' %}"></script>
+        <script src="{% static 'js/amcharts/amcharts.js' %}"></script>
+        <script src="{% static 'js/amcharts/serial.js' %}"></script>
+        <script src="{% static 'js/amcharts/pie.js' %}"></script>
+        <script src="{% static 'js/amcharts/plugins/export/export.min.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'js/amcharts/plugins/export/export.css' %}" type="text/css" media="all" />
+        <script src="{% static 'js/amcharts/themes/light.js' %}"></script>
+        <script src="{% static 'js/icheck/icheck.min.js' %}"></script>
+
+        <!-- ========== THEME JS ========== -->
+        <script src="{% static 'js/main.js' %}"></script>
+        <script src="{% static 'js/bar-chart.js' %}"></script>
+        <script src="{% static 'js/pie-chart.js' %}"></script>
+        <script src="{% static 'js/task-list.js' %}"></script>
+        <script>
+            $(function(){
+
+                // Counter for dashboard stats
+                $('.counter').counterUp({
+                    delay: 10,
+                    time: 1000
+                });
+
+            });
+        </script>
+
+        <!-- ========== ADD custom.js FILE BELOW WITH YOUR CHANGES ========== -->
+    </body>
+
+<!-- Mirrored from Worksbot-admin.themesease.com/dashboard-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Feb 2021 14:45:46 GMT -->
+</html>

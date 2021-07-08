@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<title>Login Page</title>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css' %}" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: lightblue;
+        }
+
+        .content {
+            margin: 8%;
+            background-color: #fff;
+            padding: 4rem 1rem 4rem 1rem;
+            box-shadow: 0 0 5px 5px rgba(0, 0, 0, .05);
+        }
+
+        .signin-text {
+            font-style: normal;
+            font-weight: 600 !important;
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            border-color: lightblue !important;
+            border-style: solid !important;
+            border-width: 0 0 1px 0 !important;
+            padding: 0px !important;
+            color: #495057;
+            height: auto;
+            border-radius: 0;
+            background-color: #fff;
+            background-clip: padding-box;
+        }
+
+        .form-control:focus {
+            color: #1977cc;
+            border-color: #fff;
+            background-color: #fff;
+            outline: 0;
+            box-shadow: none;
+        }
+
+        .btn-class {
+            border-color: #1977cc;
+            color: #1977cc;
+        }
+
+        .btn-class:hover {
+            background-color: #1977cc;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row content">
+            <div class="col-md-6 mb-3">
+                <img src="{% static 'assets/img/loginpage.jpg' %}" alt="" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <h3 class="signin-text mb-3">Student Login</h3>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="username">Email id:</label>
+                        <input type="email" name="email_id" class="form-control" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Password</label>
+                        <input type="password" name="password" class="form-control" id="password" required>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" name="checkbox" class="form-check-input" id="checkbox">
+                        <label class="form-check-label" for="checkbox">Remember Me</label>
+                    </div>
+                    <button class="btn btn-class" type="submit">Login</button>
+                    <a href="{% url 'index' %}" class="btn btn-class">Back</a>
+                    <br>
+                    <br>
+                    <label>Doesnt have an account?<a style="color: #1977cc;font-weight: bold;" href="/stud_re">Register</a></label>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+    <script src="{% static 'assets/vendor/venobox/venobox.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js' %}"></script>
+</body>
+
+</html>
